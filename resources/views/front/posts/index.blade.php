@@ -15,8 +15,8 @@ $title = '投稿一覧';
         <table class="table">
             @foreach($posts as $post)
                 <tr>
-                    <td>{{ $post->published_at->format('Y年m月d日') }}</td>
-                    <td>{!! link_to_route('front.posts.show', $post->title, $post) !!}</td>
+                    <td>{{ $post->published_format }}</td>
+                    <td>{!! link_to_route('posts.show', $post->title, $post) !!}</td>
                 </tr>
             @endforeach
         </table>

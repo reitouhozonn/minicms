@@ -10,7 +10,7 @@
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('front.home') }}">
+            <a class="navbar-brand" href="{{ route('home') }}">
                 Laravel CMS
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false">
@@ -20,10 +20,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item{{ Request::is('/') ? ' active' : '' }}">
-                        <a class="nav-link" href="{{ route('front.home') }}">ホーム</a>
+                        <a class="nav-link" href="{{ route('home') }}">ホーム</a>
                     </li>
                     <li class="nav-item{{ Request::is('posts', 'posts/*') ? ' active' : '' }}">
-                        <a class="nav-link" href="{{ route('front.posts.index') }}">お知らせ</a>
+                        <a class="nav-link" href="{{ route('posts.index') }}">お知らせ</a>
                     </li>
                 </ul>
             </div>
