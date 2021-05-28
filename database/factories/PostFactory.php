@@ -27,6 +27,7 @@ class PostFactory extends Factory
             'title' => $this->faker->realText(rand(20, 50)),
             'body' => $this->faker->realText(rand(100, 200)),
             'is_public' => $this->faker->boolean(90),
+            'user_id' => $this->faker->numberBetween(1, 3),
             'published_at' => $random_time,
             'created_at' => $random_time,
             'updated_at' => $random_time,

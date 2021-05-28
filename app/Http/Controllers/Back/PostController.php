@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest('id')->paginate(20);
+        $posts = Post::with('user')->latest('id')->paginate(20);
 
         return view('back.posts.index', compact('posts'));
     }
@@ -36,9 +37,19 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        $post = Post::create($request->all());
+
+        if ($post) {
+            return redirect()
+                ->route('back.posts.edit', $post)
+                ->withSuccsess('登録しました');
+        } else {
+            return redirect()
+                ->route('back.posts.create')
+                ->withError('失敗しました');
+        }
     }
 
     /**
@@ -47,9 +58,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Int $id)
     {
-        //
+        $post = Post::PublicFindById($id);
+
+        return view('front.posts.show', compact('post'));
     }
 
     /**
@@ -58,9 +71,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('back.posts.edit', compact('post'));
     }
 
     /**
@@ -70,9 +83,16 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, Post $post)
     {
-        //
+        if ($post->update($request->all())) {
+            $flash = ['succes' => '更新しました'];
+        } else {
+            $flash = ['error' => '失敗しました'];
+        }
+
+        return redirect()
+            ->route('back.posts.edit', $post)->with($flash);
     }
 
     /**
@@ -81,8 +101,15 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        if ($post->delete()) {
+            $flash = ['succes' => '削除しました'];
+        } else {
+            $flash = ['error' => '失敗しました'];
+        }
+
+        return redirect()
+            ->route('back.posts.index')->with($flash);
     }
 }

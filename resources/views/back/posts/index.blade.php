@@ -25,8 +25,9 @@ $title = '投稿一覧';
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->is_public_label }}</td>
                     <td>{{ $post->published_format }}</td>
+                    <td>{{ $post->user->name }}</td>
                     <td class="d-flex justify-content-center">
-                        {{ link_to_route('front.posts.show', '詳細', $post, [
+                        {{ link_to_route('back.posts.show', '詳細', $post, [
                             'class' => 'btn btn-secondary btn-sm m-1',
                             'target' => '_blank'
                         ]) }}
@@ -52,4 +53,7 @@ $title = '投稿一覧';
         </div>
     @endif
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
 @endsection

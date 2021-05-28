@@ -7,4 +7,4 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', [DashboardController::class]);
 
 
-Route::resource('posts', PostController::class)->except('show');
+Route::resource('posts', PostController::class);
