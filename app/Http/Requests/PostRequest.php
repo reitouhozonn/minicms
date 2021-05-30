@@ -28,6 +28,7 @@ class PostRequest extends FormRequest
             'body' => 'max:1000',
             'is_public' => 'required|numeric',
             'published_at' => 'required|data_fomat:y-m-d H:i',
+            'tags.*' => 'タグ',
         ];
     }
 }

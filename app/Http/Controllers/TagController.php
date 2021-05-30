@@ -2,23 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($tagSlug = null)
+    public function index()
     {
-        $posts = Post::publicList($tagSlug);
-        $tags = Tag::all();
-
-        return view('front.posts.index', compact('posts', 'tags'));
+        //
     }
 
     /**
@@ -43,25 +39,23 @@ class PostController extends Controller
     }
 
     /**
-     * Undocumented function
+     * Display the specified resource.
      *
-     * @param Int $id
-     * @return \Illuminate\Contracts\View\View
+     * @param  \App\Models\Tag  $tag
+     * @return \Illuminate\Http\Response
      */
-    public function show(Int $id)
+    public function show(Tag $tag)
     {
-        $post = Post::PublicFindById($id);
-
-        return view('front.posts.show', compact('post'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Tag $tag)
     {
         //
     }
@@ -70,10 +64,10 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Tag $tag)
     {
         //
     }
@@ -81,10 +75,10 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Tag $tag)
     {
         //
     }
