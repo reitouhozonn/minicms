@@ -8,3 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::resource('posts', PostController::class);
+
+Route::group(['middleware' => 'can:admin'], function () {
+    Route::resource('users', 'Usercontroller')->except('show');
+});

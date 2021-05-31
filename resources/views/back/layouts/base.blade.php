@@ -16,6 +16,11 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            @can('admin')
+            <li class="nav-item{{ Request::is('admin/users', 'admin/users/*') ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('back.users.index') }}">ユーザー</a>
+            </li>
+            @endcan
  
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">

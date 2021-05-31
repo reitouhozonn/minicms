@@ -22,7 +22,7 @@ class CreateTagsTable extends Migration
 
 
         Schema::create('post_tag', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->foreignId('post_id')->constrained();
             $table->foreignId('tag_id')->constrained();
         });
@@ -35,7 +35,7 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tags');
         Schema::dropIfExists('post_tag');
+        Schema::dropIfExists('tags');
     }
 }

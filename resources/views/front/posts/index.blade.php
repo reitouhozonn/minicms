@@ -12,14 +12,14 @@ $title = '投稿一覧';
 <div class="card-body">
     <ul class="nav nav-pills mb-2">
         <li class="nav-item">
-            {{ link_to_route('front.posts.index', 'すべて', null, [
+            {{ link_to_route('posts.index', 'すべて', null, [
                 'class' => 'nav-link'.
                 (request()->segment(3) === null ? ' active' : '')
             ]) }}
         </li>
         @foreach($tags as $tag)
             <li class="nav-item">
-                {{ link_to_route('front.posts.index.tag', $tag->name, $tag->slug, [
+                {{ link_to_route('posts.index.tag', $tag->name, $tag->slug, [
                     'class' => 'nav-link'.
                     (request()->segment(3) === $tag->slug ? ' active' : '')
                 ]) }}
@@ -39,7 +39,7 @@ $title = '投稿一覧';
                             <span class="badge badge-info">{{ $tag->name }}</span>
                         @endforeach
                     </td>
-                    <td>{!! link_to_route('front.posts.show', $post->title, $post) !!}</td>
+                    <td>{!! link_to_route('posts.show', $post->title, $post) !!}</td>
                 </tr>
             @endforeach
         </table>

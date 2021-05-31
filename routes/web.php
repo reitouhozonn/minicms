@@ -25,4 +25,4 @@ Route::middleware(['auth:sanctum', 'verified',])->get('/dashboard', function () 
 Route::get('/', [PostController::class, 'index'])->name('home');
 Route::resource('posts', PostController::class)->only(['index', 'show']);
 
-// Route::get('posts/tag/{tagSlug}', [PostController::class, 'index'])->where('tagSlug', '[a-z]+')->name('posts.index.tag');
+Route::get('posts/tag/{tagSlug}', [PostController::class, 'index'])->where('tagSlug', '[a-z]+')->name('posts.index.tag');
